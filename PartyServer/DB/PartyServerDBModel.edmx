@@ -1,0 +1,1331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MainDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MainDBModelStoreContainer">
+          <EntitySet Name="APNS_PushNotifications" EntityType="MainDBModel.Store.APNS_PushNotifications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="APNS_Subscriptions" EntityType="MainDBModel.Store.APNS_Subscriptions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="MainDBModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Design" EntityType="MainDBModel.Store.Design" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Greeting" EntityType="MainDBModel.Store.Greeting" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Invite" EntityType="MainDBModel.Store.Invite" store:Type="Tables" store:Schema="dbo" store:Name="Invite">
+            <DefiningQuery>SELECT 
+      [Invite].[Wedding ID] AS [Wedding ID], 
+      [Invite].[Invited Member ID] AS [Invited Member ID], 
+      [Invite].[Status] AS [Status]
+      FROM [dbo].[Invite] AS [Invite]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Like" EntityType="MainDBModel.Store.Like" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log" EntityType="MainDBModel.Store.Log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="MainDBModel.Store.Member" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message" EntityType="MainDBModel.Store.Message" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permission" EntityType="MainDBModel.Store.Permission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photo" EntityType="MainDBModel.Store.Photo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plan" EntityType="MainDBModel.Store.Plan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RehearsalDinner" EntityType="MainDBModel.Store.RehearsalDinner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RSVP" EntityType="MainDBModel.Store.RSVP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Task" EntityType="MainDBModel.Store.Task" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TodoList" EntityType="MainDBModel.Store.TodoList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Wedding" EntityType="MainDBModel.Store.Wedding" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Comment_Greeting" Association="MainDBModel.Store.FK_Comment_Greeting">
+            <End Role="Greeting" EntitySet="Greeting" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Member" Association="MainDBModel.Store.FK_Comment_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Greeting_Wedding" Association="MainDBModel.Store.FK_Greeting_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="Greeting" EntitySet="Greeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invite_Wedding" Association="MainDBModel.Store.FK_Invite_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="Invite" EntitySet="Invite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Comment" Association="MainDBModel.Store.FK_Like_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Greeting" Association="MainDBModel.Store.FK_Like_Greeting">
+            <End Role="Greeting" EntitySet="Greeting" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Member" Association="MainDBModel.Store.FK_Like_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Photo" Association="MainDBModel.Store.FK_Like_Photo">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Photo1" Association="MainDBModel.Store.FK_Like_Photo1">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Permission" Association="MainDBModel.Store.FK_Member_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_RSVP" Association="MainDBModel.Store.FK_Member_RSVP">
+            <End Role="RSVP" EntitySet="RSVP" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RehearsalDinner_Wedding" Association="MainDBModel.Store.FK_RehearsalDinner_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="RehearsalDinner" EntitySet="RehearsalDinner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_TodoList" Association="MainDBModel.Store.FK_Task_TodoList">
+            <End Role="TodoList" EntitySet="TodoList" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TodoList_Wedding" Association="MainDBModel.Store.FK_TodoList_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="TodoList" EntitySet="TodoList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wedding_BrideMember" Association="MainDBModel.Store.FK_Wedding_BrideMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Wedding" EntitySet="Wedding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wedding_GroomMember" Association="MainDBModel.Store.FK_Wedding_GroomMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Wedding" EntitySet="Wedding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wedding_Photo" Association="MainDBModel.Store.FK_Wedding_Photo">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Wedding" EntitySet="Wedding" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="APNS_PushNotifications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceToken" Type="varchar" MaxLength="250" />
+          <Property Name="AlertMessage" Type="varchar" MaxLength="250" />
+          <Property Name="BadgeNumber" Type="int" />
+          <Property Name="SoundFile" Type="varchar" MaxLength="250" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="250" />
+          <Property Name="AddedOn" Type="datetime" />
+          <Property Name="AddedBy" Type="varchar" MaxLength="250" />
+          <Property Name="ProcessedOn" Type="datetime" />
+          <Property Name="ViewedOnDeviceDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="APNS_Subscriptions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceToken" Type="varchar" MaxLength="250" />
+          <Property Name="DeviceID" Type="varchar" MaxLength="250" />
+          <Property Name="NetworkID" Type="varchar" MaxLength="250" />
+          <Property Name="Application" Type="varchar" MaxLength="250" />
+          <Property Name="AddedOn" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Dev" Type="bit" />
+          <Property Name="BadgeCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Comment ID" />
+          </Key>
+          <Property Name="Comment ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Member ID" Type="int" Nullable="false" />
+          <Property Name="Greeting ID" Type="int" />
+          <Property Name="Photo ID" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Design">
+          <Key>
+            <PropertyRef Name="Design ID" />
+          </Key>
+          <Property Name="Design ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cost" Type="int" />
+          <Property Name="Files Path" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Greeting">
+          <Key>
+            <PropertyRef Name="Greeting ID" />
+          </Key>
+          <Property Name="Greeting ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Wedding ID" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'MainDB.dbo.Invite' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Invite">
+          <Key>
+            <PropertyRef Name="Wedding ID" />
+            <PropertyRef Name="Invited Member ID" />
+          </Key>
+          <Property Name="Wedding ID" Type="int" Nullable="false" />
+          <Property Name="Invited Member ID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="Like ID" />
+          </Key>
+          <Property Name="Like ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Member ID" Type="int" Nullable="false" />
+          <Property Name="Greeting ID" Type="int" />
+          <Property Name="Comment ID" Type="int" />
+          <Property Name="Photo ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Log Message ID" />
+          </Key>
+          <Property Name="Log Message ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="nvarchar" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Action" Type="int" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Member ID" />
+          </Key>
+          <Property Name="Member ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="First Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Last Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Token ID" Type="varchar" MaxLength="250" />
+          <Property Name="Wedding ID" Type="int" />
+          <Property Name="Permission ID" Type="int" />
+          <Property Name="RSVP ID" Type="int" />
+          <Property Name="Is Blocked" Type="bit" />
+          <Property Name="FacebookUserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="nvarchar" MaxLength="500" />
+          <Property Name="Action" Type="int" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Permission ID" />
+          </Key>
+          <Property Name="Permission ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Photo ID" />
+          </Key>
+          <Property Name="Photo ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Image Path" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Plan ID" />
+          </Key>
+          <Property Name="Plan ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Max Uploads" Type="int" />
+          <Property Name="SMS Contacts Included" Type="int" />
+          <Property Name="SMS Wedding Day Included" Type="int" />
+          <Property Name="Streaming Video" Type="int" />
+        </EntityType>
+        <EntityType Name="RehearsalDinner">
+          <Key>
+            <PropertyRef Name="Rehearsal ID" />
+          </Key>
+          <Property Name="Rehearsal ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Wedding ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Place" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RSVP">
+          <Key>
+            <PropertyRef Name="RSVP ID" />
+          </Key>
+          <Property Name="RSVP ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Task ID" />
+          </Key>
+          <Property Name="Task ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" />
+          <Property Name="Due Time" Type="nvarchar" MaxLength="500" />
+          <Property Name="Todo List ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TodoList">
+          <Key>
+            <PropertyRef Name="TodoList ID" />
+          </Key>
+          <Property Name="TodoList ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Wedding ID" Type="int" Nullable="false" />
+          <Property Name="Task ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wedding">
+          <Key>
+            <PropertyRef Name="Wedding ID" />
+          </Key>
+          <Property Name="Wedding ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Place" Type="nvarchar" MaxLength="500" />
+          <Property Name="Groom ID" Type="int" Nullable="false" />
+          <Property Name="Bride ID" Type="int" Nullable="false" />
+          <Property Name="Plan ID" Type="int" />
+          <Property Name="Image ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Comment_Greeting">
+          <End Role="Greeting" Type="MainDBModel.Store.Greeting" Multiplicity="0..1" />
+          <End Role="Comment" Type="MainDBModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Greeting">
+              <PropertyRef Name="Greeting ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Greeting ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Member">
+          <End Role="Member" Type="MainDBModel.Store.Member" Multiplicity="1" />
+          <End Role="Comment" Type="MainDBModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Member ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Greeting_Wedding">
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="0..1" />
+          <End Role="Greeting" Type="MainDBModel.Store.Greeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding ID" />
+            </Principal>
+            <Dependent Role="Greeting">
+              <PropertyRef Name="Wedding ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invite_Wedding">
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="1" />
+          <End Role="Invite" Type="MainDBModel.Store.Invite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding ID" />
+            </Principal>
+            <Dependent Role="Invite">
+              <PropertyRef Name="Wedding ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Comment">
+          <End Role="Comment" Type="MainDBModel.Store.Comment" Multiplicity="0..1" />
+          <End Role="Like" Type="MainDBModel.Store.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Comment ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Comment ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Greeting">
+          <End Role="Greeting" Type="MainDBModel.Store.Greeting" Multiplicity="0..1" />
+          <End Role="Like" Type="MainDBModel.Store.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Greeting">
+              <PropertyRef Name="Greeting ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Greeting ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Member">
+          <End Role="Member" Type="MainDBModel.Store.Member" Multiplicity="1" />
+          <End Role="Like" Type="MainDBModel.Store.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Member ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Photo">
+          <End Role="Photo" Type="MainDBModel.Store.Photo" Multiplicity="0..1" />
+          <End Role="Like" Type="MainDBModel.Store.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Photo ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Photo ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Photo1">
+          <End Role="Photo" Type="MainDBModel.Store.Photo" Multiplicity="0..1" />
+          <End Role="Like" Type="MainDBModel.Store.Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Photo ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Photo ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Permission">
+          <End Role="Permission" Type="MainDBModel.Store.Permission" Multiplicity="0..1" />
+          <End Role="Member" Type="MainDBModel.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Permission ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="Permission ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_RSVP">
+          <End Role="RSVP" Type="MainDBModel.Store.RSVP" Multiplicity="0..1" />
+          <End Role="Member" Type="MainDBModel.Store.Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RSVP">
+              <PropertyRef Name="RSVP ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="RSVP ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RehearsalDinner_Wedding">
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="1" />
+          <End Role="RehearsalDinner" Type="MainDBModel.Store.RehearsalDinner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding ID" />
+            </Principal>
+            <Dependent Role="RehearsalDinner">
+              <PropertyRef Name="Wedding ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_TodoList">
+          <End Role="TodoList" Type="MainDBModel.Store.TodoList" Multiplicity="1" />
+          <End Role="Task" Type="MainDBModel.Store.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TodoList">
+              <PropertyRef Name="TodoList ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Todo List ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TodoList_Wedding">
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="1" />
+          <End Role="TodoList" Type="MainDBModel.Store.TodoList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding ID" />
+            </Principal>
+            <Dependent Role="TodoList">
+              <PropertyRef Name="Wedding ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wedding_BrideMember">
+          <End Role="Member" Type="MainDBModel.Store.Member" Multiplicity="1" />
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member ID" />
+            </Principal>
+            <Dependent Role="Wedding">
+              <PropertyRef Name="Bride ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wedding_GroomMember">
+          <End Role="Member" Type="MainDBModel.Store.Member" Multiplicity="1" />
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member ID" />
+            </Principal>
+            <Dependent Role="Wedding">
+              <PropertyRef Name="Groom ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wedding_Photo">
+          <End Role="Photo" Type="MainDBModel.Store.Photo" Multiplicity="0..1" />
+          <End Role="Wedding" Type="MainDBModel.Store.Wedding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Photo ID" />
+            </Principal>
+            <Dependent Role="Wedding">
+              <PropertyRef Name="Image ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MainDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MainDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APNS_PushNotifications" EntityType="MainDBModel.APNS_PushNotifications" />
+          <EntitySet Name="APNS_Subscriptions" EntityType="MainDBModel.APNS_Subscriptions" />
+          <EntitySet Name="Comment" EntityType="MainDBModel.Comment" />
+          <EntitySet Name="Design" EntityType="MainDBModel.Design" />
+          <EntitySet Name="Greeting" EntityType="MainDBModel.Greeting" />
+          <EntitySet Name="Invite" EntityType="MainDBModel.Invite" />
+          <EntitySet Name="Like" EntityType="MainDBModel.Like" />
+          <EntitySet Name="Log" EntityType="MainDBModel.Log" />
+          <EntitySet Name="Member" EntityType="MainDBModel.Member" />
+          <EntitySet Name="Message" EntityType="MainDBModel.Message" />
+          <EntitySet Name="Permission" EntityType="MainDBModel.Permission" />
+          <EntitySet Name="Photo" EntityType="MainDBModel.Photo" />
+          <EntitySet Name="Plan" EntityType="MainDBModel.Plan" />
+          <EntitySet Name="RehearsalDinner" EntityType="MainDBModel.RehearsalDinner" />
+          <EntitySet Name="RSVP" EntityType="MainDBModel.RSVP" />
+          <EntitySet Name="Task" EntityType="MainDBModel.Task" />
+          <EntitySet Name="TodoList" EntityType="MainDBModel.TodoList" />
+          <EntitySet Name="Wedding" EntityType="MainDBModel.Wedding" />
+          <AssociationSet Name="FK_Comment_Greeting" Association="MainDBModel.FK_Comment_Greeting">
+            <End Role="Greeting" EntitySet="Greeting" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Member" Association="MainDBModel.FK_Comment_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Comment" Association="MainDBModel.FK_Like_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Greeting_Wedding" Association="MainDBModel.FK_Greeting_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="Greeting" EntitySet="Greeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Greeting" Association="MainDBModel.FK_Like_Greeting">
+            <End Role="Greeting" EntitySet="Greeting" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invite_Wedding" Association="MainDBModel.FK_Invite_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="Invite" EntitySet="Invite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Member" Association="MainDBModel.FK_Like_Member">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Photo" Association="MainDBModel.FK_Like_Photo">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Like_Photo1" Association="MainDBModel.FK_Like_Photo1">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Like" EntitySet="Like" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_Permission" Association="MainDBModel.FK_Member_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Member_RSVP" Association="MainDBModel.FK_Member_RSVP">
+            <End Role="RSVP" EntitySet="RSVP" />
+            <End Role="Member" EntitySet="Member" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wedding_BrideMember" Association="MainDBModel.FK_Wedding_BrideMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Wedding" EntitySet="Wedding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wedding_GroomMember" Association="MainDBModel.FK_Wedding_GroomMember">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Wedding" EntitySet="Wedding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wedding_Photo" Association="MainDBModel.FK_Wedding_Photo">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="Wedding" EntitySet="Wedding" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RehearsalDinner_Wedding" Association="MainDBModel.FK_RehearsalDinner_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="RehearsalDinner" EntitySet="RehearsalDinner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_TodoList" Association="MainDBModel.FK_Task_TodoList">
+            <End Role="TodoList" EntitySet="TodoList" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TodoList_Wedding" Association="MainDBModel.FK_TodoList_Wedding">
+            <End Role="Wedding" EntitySet="Wedding" />
+            <End Role="TodoList" EntitySet="TodoList" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="APNS_PushNotifications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DeviceToken" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AlertMessage" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="BadgeNumber" />
+          <Property Type="String" Name="SoundFile" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ApplicationName" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="AddedOn" />
+          <Property Type="String" Name="AddedBy" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ProcessedOn" />
+          <Property Type="DateTime" Name="ViewedOnDeviceDateTime" />
+        </EntityType>
+        <EntityType Name="APNS_Subscriptions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DeviceToken" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeviceID" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NetworkID" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Application" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="AddedOn" />
+          <Property Type="Boolean" Name="Active" />
+          <Property Type="Boolean" Name="Dev" />
+          <Property Type="Int32" Name="BadgeCount" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Comment_ID" />
+          </Key>
+          <Property Type="Int32" Name="Comment_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Member_ID" Nullable="false" />
+          <Property Type="Int32" Name="Greeting_ID" />
+          <Property Type="Int32" Name="Photo_ID" />
+          <Property Type="String" Name="Text" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Greeting" Relationship="MainDBModel.FK_Comment_Greeting" FromRole="Comment" ToRole="Greeting" />
+          <NavigationProperty Name="Member" Relationship="MainDBModel.FK_Comment_Member" FromRole="Comment" ToRole="Member" />
+          <NavigationProperty Name="Like" Relationship="MainDBModel.FK_Like_Comment" FromRole="Comment" ToRole="Like" />
+        </EntityType>
+        <EntityType Name="Design">
+          <Key>
+            <PropertyRef Name="Design_ID" />
+          </Key>
+          <Property Type="Int32" Name="Design_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Cost" />
+          <Property Type="String" Name="Files_Path" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Greeting">
+          <Key>
+            <PropertyRef Name="Greeting_ID" />
+          </Key>
+          <Property Type="Int32" Name="Greeting_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Wedding_ID" />
+          <Property Type="String" Name="Text" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comment" Relationship="MainDBModel.FK_Comment_Greeting" FromRole="Greeting" ToRole="Comment" />
+          <NavigationProperty Name="Wedding" Relationship="MainDBModel.FK_Greeting_Wedding" FromRole="Greeting" ToRole="Wedding" />
+          <NavigationProperty Name="Like" Relationship="MainDBModel.FK_Like_Greeting" FromRole="Greeting" ToRole="Like" />
+        </EntityType>
+        <EntityType Name="Invite">
+          <Key>
+            <PropertyRef Name="Wedding_ID" />
+            <PropertyRef Name="Invited_Member_ID" />
+          </Key>
+          <Property Type="Int32" Name="Wedding_ID" Nullable="false" />
+          <Property Type="Int32" Name="Invited_Member_ID" Nullable="false" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="Wedding" Relationship="MainDBModel.FK_Invite_Wedding" FromRole="Invite" ToRole="Wedding" />
+        </EntityType>
+        <EntityType Name="Like">
+          <Key>
+            <PropertyRef Name="Like_ID" />
+          </Key>
+          <Property Type="Int32" Name="Like_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Member_ID" Nullable="false" />
+          <Property Type="Int32" Name="Greeting_ID" />
+          <Property Type="Int32" Name="Comment_ID" />
+          <Property Type="Int32" Name="Photo_ID" />
+          <NavigationProperty Name="Comment" Relationship="MainDBModel.FK_Like_Comment" FromRole="Like" ToRole="Comment" />
+          <NavigationProperty Name="Greeting" Relationship="MainDBModel.FK_Like_Greeting" FromRole="Like" ToRole="Greeting" />
+          <NavigationProperty Name="Member" Relationship="MainDBModel.FK_Like_Member" FromRole="Like" ToRole="Member" />
+          <NavigationProperty Name="Photo" Relationship="MainDBModel.FK_Like_Photo" FromRole="Like" ToRole="Photo" />
+          <NavigationProperty Name="Photo1" Relationship="MainDBModel.FK_Like_Photo1" FromRole="Like" ToRole="Photo" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Log_Message_ID" />
+          </Key>
+          <Property Type="Int32" Name="Log_Message_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Data" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Time" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Action" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Member_ID" />
+          </Key>
+          <Property Type="Int32" Name="Member_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="First_Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Last_Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Token_ID" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Wedding_ID" />
+          <Property Type="Int32" Name="Permission_ID" />
+          <Property Type="Int32" Name="RSVP_ID" />
+          <Property Type="Boolean" Name="Is_Blocked" />
+          <Property Type="Int32" Name="FacebookUserID" />
+          <NavigationProperty Name="Comment" Relationship="MainDBModel.FK_Comment_Member" FromRole="Member" ToRole="Comment" />
+          <NavigationProperty Name="Like" Relationship="MainDBModel.FK_Like_Member" FromRole="Member" ToRole="Like" />
+          <NavigationProperty Name="Permission" Relationship="MainDBModel.FK_Member_Permission" FromRole="Member" ToRole="Permission" />
+          <NavigationProperty Name="RSVP" Relationship="MainDBModel.FK_Member_RSVP" FromRole="Member" ToRole="RSVP" />
+          <NavigationProperty Name="Wedding" Relationship="MainDBModel.FK_Wedding_BrideMember" FromRole="Member" ToRole="Wedding" />
+          <NavigationProperty Name="Wedding1" Relationship="MainDBModel.FK_Wedding_GroomMember" FromRole="Member" ToRole="Wedding" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Type="Int32" Name="MessageID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Data" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Action" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Permission_ID" />
+          </Key>
+          <Property Type="Int32" Name="Permission_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Priority" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="MainDBModel.FK_Member_Permission" FromRole="Permission" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Photo_ID" />
+          </Key>
+          <Property Type="Int32" Name="Photo_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Image_Path" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Like" Relationship="MainDBModel.FK_Like_Photo" FromRole="Photo" ToRole="Like" />
+          <NavigationProperty Name="Like1" Relationship="MainDBModel.FK_Like_Photo1" FromRole="Photo" ToRole="Like" />
+          <NavigationProperty Name="Wedding" Relationship="MainDBModel.FK_Wedding_Photo" FromRole="Photo" ToRole="Wedding" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Plan_ID" />
+          </Key>
+          <Property Type="Int32" Name="Plan_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Max_Uploads" />
+          <Property Type="Int32" Name="SMS_Contacts_Included" />
+          <Property Type="Int32" Name="SMS_Wedding_Day_Included" />
+          <Property Type="Int32" Name="Streaming_Video" />
+        </EntityType>
+        <EntityType Name="RehearsalDinner">
+          <Key>
+            <PropertyRef Name="Rehearsal_ID" />
+          </Key>
+          <Property Type="Int32" Name="Rehearsal_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Wedding_ID" Nullable="false" />
+          <Property Type="String" Name="Date" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Time" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Place" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Wedding" Relationship="MainDBModel.FK_RehearsalDinner_Wedding" FromRole="RehearsalDinner" ToRole="Wedding" />
+        </EntityType>
+        <EntityType Name="RSVP">
+          <Key>
+            <PropertyRef Name="RSVP_ID" />
+          </Key>
+          <Property Type="Int32" Name="RSVP_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="Member" Relationship="MainDBModel.FK_Member_RSVP" FromRole="RSVP" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Task_ID" />
+          </Key>
+          <Property Type="Int32" Name="Task_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Due_Time" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Todo_List_ID" Nullable="false" />
+          <NavigationProperty Name="TodoList" Relationship="MainDBModel.FK_Task_TodoList" FromRole="Task" ToRole="TodoList" />
+        </EntityType>
+        <EntityType Name="TodoList">
+          <Key>
+            <PropertyRef Name="TodoList_ID" />
+          </Key>
+          <Property Type="Int32" Name="TodoList_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Wedding_ID" Nullable="false" />
+          <Property Type="Int32" Name="Task_ID" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="MainDBModel.FK_Task_TodoList" FromRole="TodoList" ToRole="Task" />
+          <NavigationProperty Name="Wedding" Relationship="MainDBModel.FK_TodoList_Wedding" FromRole="TodoList" ToRole="Wedding" />
+        </EntityType>
+        <EntityType Name="Wedding">
+          <Key>
+            <PropertyRef Name="Wedding_ID" />
+          </Key>
+          <Property Type="Int32" Name="Wedding_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Date" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Place" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Groom_ID" Nullable="false" />
+          <Property Type="Int32" Name="Bride_ID" Nullable="false" />
+          <Property Type="Int32" Name="Plan_ID" />
+          <Property Type="Int32" Name="Image_ID" />
+          <NavigationProperty Name="Greeting" Relationship="MainDBModel.FK_Greeting_Wedding" FromRole="Wedding" ToRole="Greeting" />
+          <NavigationProperty Name="Invite" Relationship="MainDBModel.FK_Invite_Wedding" FromRole="Wedding" ToRole="Invite" />
+          <NavigationProperty Name="Member" Relationship="MainDBModel.FK_Wedding_BrideMember" FromRole="Wedding" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="MainDBModel.FK_Wedding_GroomMember" FromRole="Wedding" ToRole="Member" />
+          <NavigationProperty Name="Photo" Relationship="MainDBModel.FK_Wedding_Photo" FromRole="Wedding" ToRole="Photo" />
+          <NavigationProperty Name="RehearsalDinner" Relationship="MainDBModel.FK_RehearsalDinner_Wedding" FromRole="Wedding" ToRole="RehearsalDinner" />
+          <NavigationProperty Name="TodoList" Relationship="MainDBModel.FK_TodoList_Wedding" FromRole="Wedding" ToRole="TodoList" />
+        </EntityType>
+        <Association Name="FK_Comment_Greeting">
+          <End Type="MainDBModel.Greeting" Role="Greeting" Multiplicity="0..1" />
+          <End Type="MainDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Greeting">
+              <PropertyRef Name="Greeting_ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Greeting_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Member">
+          <End Type="MainDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MainDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Comment">
+          <End Type="MainDBModel.Comment" Role="Comment" Multiplicity="0..1" />
+          <End Type="MainDBModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Comment_ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Greeting_Wedding">
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="0..1" />
+          <End Type="MainDBModel.Greeting" Role="Greeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding_ID" />
+            </Principal>
+            <Dependent Role="Greeting">
+              <PropertyRef Name="Wedding_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Greeting">
+          <End Type="MainDBModel.Greeting" Role="Greeting" Multiplicity="0..1" />
+          <End Type="MainDBModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Greeting">
+              <PropertyRef Name="Greeting_ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Greeting_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invite_Wedding">
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="1" />
+          <End Type="MainDBModel.Invite" Role="Invite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding_ID" />
+            </Principal>
+            <Dependent Role="Invite">
+              <PropertyRef Name="Wedding_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Member">
+          <End Type="MainDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MainDBModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Member_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Photo">
+          <End Type="MainDBModel.Photo" Role="Photo" Multiplicity="0..1" />
+          <End Type="MainDBModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Photo_ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Photo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Like_Photo1">
+          <End Type="MainDBModel.Photo" Role="Photo" Multiplicity="0..1" />
+          <End Type="MainDBModel.Like" Role="Like" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Photo_ID" />
+            </Principal>
+            <Dependent Role="Like">
+              <PropertyRef Name="Photo_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_Permission">
+          <End Type="MainDBModel.Permission" Role="Permission" Multiplicity="0..1" />
+          <End Type="MainDBModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Permission_ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="Permission_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Member_RSVP">
+          <End Type="MainDBModel.RSVP" Role="RSVP" Multiplicity="0..1" />
+          <End Type="MainDBModel.Member" Role="Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RSVP">
+              <PropertyRef Name="RSVP_ID" />
+            </Principal>
+            <Dependent Role="Member">
+              <PropertyRef Name="RSVP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wedding_BrideMember">
+          <End Type="MainDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="Wedding">
+              <PropertyRef Name="Bride_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wedding_GroomMember">
+          <End Type="MainDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Member_ID" />
+            </Principal>
+            <Dependent Role="Wedding">
+              <PropertyRef Name="Groom_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wedding_Photo">
+          <End Type="MainDBModel.Photo" Role="Photo" Multiplicity="0..1" />
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Photo_ID" />
+            </Principal>
+            <Dependent Role="Wedding">
+              <PropertyRef Name="Image_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RehearsalDinner_Wedding">
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="1" />
+          <End Type="MainDBModel.RehearsalDinner" Role="RehearsalDinner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding_ID" />
+            </Principal>
+            <Dependent Role="RehearsalDinner">
+              <PropertyRef Name="Wedding_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_TodoList">
+          <End Type="MainDBModel.TodoList" Role="TodoList" Multiplicity="1" />
+          <End Type="MainDBModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TodoList">
+              <PropertyRef Name="TodoList_ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Todo_List_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TodoList_Wedding">
+          <End Type="MainDBModel.Wedding" Role="Wedding" Multiplicity="1" />
+          <End Type="MainDBModel.TodoList" Role="TodoList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wedding">
+              <PropertyRef Name="Wedding_ID" />
+            </Principal>
+            <Dependent Role="TodoList">
+              <PropertyRef Name="Wedding_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MainDBModelStoreContainer" CdmEntityContainer="MainDBEntities1">
+          <EntitySetMapping Name="APNS_PushNotifications">
+            <EntityTypeMapping TypeName="MainDBModel.APNS_PushNotifications">
+              <MappingFragment StoreEntitySet="APNS_PushNotifications">
+                <ScalarProperty Name="ViewedOnDeviceDateTime" ColumnName="ViewedOnDeviceDateTime" />
+                <ScalarProperty Name="ProcessedOn" ColumnName="ProcessedOn" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="SoundFile" ColumnName="SoundFile" />
+                <ScalarProperty Name="BadgeNumber" ColumnName="BadgeNumber" />
+                <ScalarProperty Name="AlertMessage" ColumnName="AlertMessage" />
+                <ScalarProperty Name="DeviceToken" ColumnName="DeviceToken" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APNS_Subscriptions">
+            <EntityTypeMapping TypeName="MainDBModel.APNS_Subscriptions">
+              <MappingFragment StoreEntitySet="APNS_Subscriptions">
+                <ScalarProperty Name="BadgeCount" ColumnName="BadgeCount" />
+                <ScalarProperty Name="Dev" ColumnName="Dev" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="NetworkID" ColumnName="NetworkID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="DeviceToken" ColumnName="DeviceToken" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="MainDBModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Photo_ID" ColumnName="Photo ID" />
+                <ScalarProperty Name="Greeting_ID" ColumnName="Greeting ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member ID" />
+                <ScalarProperty Name="Comment_ID" ColumnName="Comment ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Design">
+            <EntityTypeMapping TypeName="MainDBModel.Design">
+              <MappingFragment StoreEntitySet="Design">
+                <ScalarProperty Name="Files_Path" ColumnName="Files Path" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Design_ID" ColumnName="Design ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Greeting">
+            <EntityTypeMapping TypeName="MainDBModel.Greeting">
+              <MappingFragment StoreEntitySet="Greeting">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Wedding_ID" ColumnName="Wedding ID" />
+                <ScalarProperty Name="Greeting_ID" ColumnName="Greeting ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invite">
+            <EntityTypeMapping TypeName="MainDBModel.Invite">
+              <MappingFragment StoreEntitySet="Invite">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Invited_Member_ID" ColumnName="Invited Member ID" />
+                <ScalarProperty Name="Wedding_ID" ColumnName="Wedding ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Like">
+            <EntityTypeMapping TypeName="MainDBModel.Like">
+              <MappingFragment StoreEntitySet="Like">
+                <ScalarProperty Name="Photo_ID" ColumnName="Photo ID" />
+                <ScalarProperty Name="Comment_ID" ColumnName="Comment ID" />
+                <ScalarProperty Name="Greeting_ID" ColumnName="Greeting ID" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member ID" />
+                <ScalarProperty Name="Like_ID" ColumnName="Like ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="MainDBModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Log_Message_ID" ColumnName="Log Message ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="MainDBModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="FacebookUserID" ColumnName="FacebookUserID" />
+                <ScalarProperty Name="Is_Blocked" ColumnName="Is Blocked" />
+                <ScalarProperty Name="RSVP_ID" ColumnName="RSVP ID" />
+                <ScalarProperty Name="Permission_ID" ColumnName="Permission ID" />
+                <ScalarProperty Name="Wedding_ID" ColumnName="Wedding ID" />
+                <ScalarProperty Name="Token_ID" ColumnName="Token ID" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Member_ID" ColumnName="Member ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="MainDBModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="MainDBModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Permission_ID" ColumnName="Permission ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photo">
+            <EntityTypeMapping TypeName="MainDBModel.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="Image_Path" ColumnName="Image Path" />
+                <ScalarProperty Name="Photo_ID" ColumnName="Photo ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan">
+            <EntityTypeMapping TypeName="MainDBModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="Streaming_Video" ColumnName="Streaming Video" />
+                <ScalarProperty Name="SMS_Wedding_Day_Included" ColumnName="SMS Wedding Day Included" />
+                <ScalarProperty Name="SMS_Contacts_Included" ColumnName="SMS Contacts Included" />
+                <ScalarProperty Name="Max_Uploads" ColumnName="Max Uploads" />
+                <ScalarProperty Name="Plan_ID" ColumnName="Plan ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RehearsalDinner">
+            <EntityTypeMapping TypeName="MainDBModel.RehearsalDinner">
+              <MappingFragment StoreEntitySet="RehearsalDinner">
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Wedding_ID" ColumnName="Wedding ID" />
+                <ScalarProperty Name="Rehearsal_ID" ColumnName="Rehearsal ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RSVP">
+            <EntityTypeMapping TypeName="MainDBModel.RSVP">
+              <MappingFragment StoreEntitySet="RSVP">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RSVP_ID" ColumnName="RSVP ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="MainDBModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Todo_List_ID" ColumnName="Todo List ID" />
+                <ScalarProperty Name="Due_Time" ColumnName="Due Time" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Task_ID" ColumnName="Task ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TodoList">
+            <EntityTypeMapping TypeName="MainDBModel.TodoList">
+              <MappingFragment StoreEntitySet="TodoList">
+                <ScalarProperty Name="Task_ID" ColumnName="Task ID" />
+                <ScalarProperty Name="Wedding_ID" ColumnName="Wedding ID" />
+                <ScalarProperty Name="TodoList_ID" ColumnName="TodoList ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wedding">
+            <EntityTypeMapping TypeName="MainDBModel.Wedding">
+              <MappingFragment StoreEntitySet="Wedding">
+                <ScalarProperty Name="Image_ID" ColumnName="Image ID" />
+                <ScalarProperty Name="Plan_ID" ColumnName="Plan ID" />
+                <ScalarProperty Name="Bride_ID" ColumnName="Bride ID" />
+                <ScalarProperty Name="Groom_ID" ColumnName="Groom ID" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Wedding_ID" ColumnName="Wedding ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="PartyServerDBModel">
+        <EntityTypeShape EntityType="MainDBModel.APNS_PushNotifications" Width="1.5" PointX="10.75" PointY="6.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="MainDBModel.APNS_Subscriptions" Width="1.5" PointX="0.75" PointY="11.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="MainDBModel.Comment" Width="1.5" PointX="10.5" PointY="3.375" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="MainDBModel.Design" Width="1.5" PointX="5.75" PointY="0.75" Height="1.5956835937500067" />
+        <EntityTypeShape EntityType="MainDBModel.Greeting" Width="1.5" PointX="8.25" PointY="3.625" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="MainDBModel.Invite" Width="1.5" PointX="8.25" PointY="6.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MainDBModel.Like" Width="1.5" PointX="3" PointY="7.25" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="MainDBModel.Log" Width="1.5" PointX="7.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="MainDBModel.Member" Width="1.5" PointX="3.75" PointY="1.75" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="MainDBModel.Message" Width="1.5" PointX="9.75" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="MainDBModel.Permission" Width="1.5" PointX="1.5" PointY="1.75" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="MainDBModel.Photo" Width="1.5" PointX="0.75" PointY="7.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="MainDBModel.Plan" Width="1.5" PointX="2.75" PointY="11.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="MainDBModel.RehearsalDinner" Width="1.5" PointX="8.25" PointY="9" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="MainDBModel.RSVP" Width="1.5" PointX="1.5" PointY="4.125" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="MainDBModel.Task" Width="1.5" PointX="10.5" PointY="12" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="MainDBModel.TodoList" Width="1.5" PointX="8.25" PointY="12" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="MainDBModel.Wedding" Width="1.5" PointX="6" PointY="6.875" Height="3.7109993489583246" />
+        <AssociationConnector Association="MainDBModel.FK_Comment_Greeting" >
+          <ConnectorPoint PointX="9.75" PointY="4.7112939453125051" />
+          <ConnectorPoint PointX="10.5" PointY="4.7112939453125051" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Comment_Member" >
+          <ConnectorPoint PointX="5.25" PointY="3.46875" />
+          <ConnectorPoint PointX="10.5" PointY="3.46875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Like_Comment" >
+          <ConnectorPoint PointX="10.5" PointY="5.3529943502604116" />
+          <ConnectorPoint PointX="10" PointY="5.3529943502604116" />
+          <ConnectorPoint PointX="10" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="8.0353190104166767" PointY="6.0956022135416665" />
+          <ConnectorPoint PointX="7.86865234375001" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="6.0956022135416665" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="5.1927108333333329" PointY="6.0956022135416665" />
+          <ConnectorPoint PointX="5.0260441666666669" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="6.0956022135416665" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="4.4739593333333332" PointY="6.0956022135416665" />
+          <ConnectorPoint PointX="4.3072926666666671" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="3.75" PointY="6.0956022135416674" />
+          <ConnectorPoint PointX="3.75" PointY="7.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Greeting_Wedding" >
+          <ConnectorPoint PointX="6.75" PointY="6.875" />
+          <ConnectorPoint PointX="6.75" PointY="4.7112939453125051" />
+          <ConnectorPoint PointX="8.25" PointY="4.7112939453125051" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Like_Greeting" >
+          <ConnectorPoint PointX="8.25" PointY="5.79758789062501" />
+          <ConnectorPoint PointX="7.625" PointY="6.42258789062501" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="6.4225878906250093" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="6.42258789062501" />
+          <ConnectorPoint PointX="5.1927108333333329" PointY="6.4225878906250093" />
+          <ConnectorPoint PointX="5.0260441666666669" PointY="6.42258789062501" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="6.4225878906250093" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="6.42258789062501" />
+          <ConnectorPoint PointX="4.4739593333333332" PointY="6.4225878906250093" />
+          <ConnectorPoint PointX="4.3072926666666671" PointY="6.42258789062501" />
+          <ConnectorPoint PointX="4.156252" PointY="6.42258789062501" />
+          <ConnectorPoint PointX="4.156252" PointY="7.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Invite_Wedding" >
+          <ConnectorPoint PointX="7.5" PointY="7.5814925130208337" />
+          <ConnectorPoint PointX="8.25" PointY="7.5814925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Like_Member" >
+          <ConnectorPoint PointX="4.390626" PointY="5.8456022135416674" />
+          <ConnectorPoint PointX="4.390626" PointY="7.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Like_Photo" >
+          <ConnectorPoint PointX="2.25" PointY="8.7401432291666623" />
+          <ConnectorPoint PointX="3" PointY="8.7401432291666623" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Like_Photo1" >
+          <ConnectorPoint PointX="2.25" PointY="8.1825716145833312" />
+          <ConnectorPoint PointX="3" PointY="8.1825716145833312" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Member_Permission" >
+          <ConnectorPoint PointX="3" PointY="2.547841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="2.547841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Member_RSVP" >
+          <ConnectorPoint PointX="3" PointY="4.922841796874998" />
+          <ConnectorPoint PointX="3.75" PointY="4.922841796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Wedding_BrideMember" >
+          <ConnectorPoint PointX="4.90625" PointY="5.8456022135416674" />
+          <ConnectorPoint PointX="4.90625" PointY="10.420146484374996" />
+          <ConnectorPoint PointX="6" PointY="10.420146484374996" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Wedding_GroomMember" >
+          <ConnectorPoint PointX="5.1093775" PointY="5.8456022135416674" />
+          <ConnectorPoint PointX="5.1093775" PointY="7.03125" />
+          <ConnectorPoint PointX="6" PointY="7.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Wedding_Photo" >
+          <ConnectorPoint PointX="1.5" PointY="9.7302864583333246" />
+          <ConnectorPoint PointX="1.5" PointY="10.305967552083338" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="10.305967552083338" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="10.305967552083338" />
+          <ConnectorPoint PointX="6" PointY="10.305967552083338" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_RehearsalDinner_Wedding" >
+          <ConnectorPoint PointX="7.5" PointY="9.7929996744791623" />
+          <ConnectorPoint PointX="8.25" PointY="9.7929996744791623" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_Task_TodoList" >
+          <ConnectorPoint PointX="9.75" PointY="12.990143229166662" />
+          <ConnectorPoint PointX="10.5" PointY="12.990143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="MainDBModel.FK_TodoList_Wedding" >
+          <ConnectorPoint PointX="6.75" PointY="10.585999348958325" />
+          <ConnectorPoint PointX="6.75" PointY="12.990143229166669" />
+          <ConnectorPoint PointX="8.25" PointY="12.990143229166669" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CC365135-A54B-4D95-AE45-8E38E60D915A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PartyServer</RootNamespace>
+    <AssemblyName>PartyServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\TextCounterConverter.cs" />
+    <Compile Include="DB\APNS_PushNotifications.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\APNS_Subscriptions.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Comment.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Design.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Greeting.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Invite.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Like.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Log.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Member.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Message.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\PartyServerDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartyServerDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\PartyServerDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\PartyServerDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartyServerDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Permission.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Photo.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Plan.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\RehearsalDinner.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\RSVP.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Task.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\TodoList.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Wedding.cs">
+      <DependentUpon>PartyServerDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DynamicJsonConverter.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="LogWindow\ManageLog.xaml.cs">
+      <DependentUpon>ManageLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogWindow\ManageLogCommand.cs" />
+    <Compile Include="LogWindow\ManageLogViewModel.cs" />
+    <Compile Include="ManageMessages\ManageMessages.xaml.cs">
+      <DependentUpon>ManageMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageMessages\ManageMessagesCommand.cs" />
+    <Compile Include="ManageMessages\ManageMessagesViewModel.cs" />
+    <Compile Include="ManageUsers\ManageUsers.xaml.cs">
+      <DependentUpon>ManageUsers.xaml</DependentUpon>
+    </Compile>
+    <Page Include="LogWindow\ManageLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageMessages\ManageMessages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PushMessage\PushMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\IconsResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ImplicitStylesResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\StylesResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManageUsers\ManageUsersCommand.cs" />
+    <Compile Include="Converters\IsBiggerThanConverter.cs" />
+    <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Helpers\NotificationObject.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="ManageUsers\ManageUsersViewModel.cs" />
+    <Compile Include="PushMessage\PushMessageCommand.cs" />
+    <Compile Include="PushMessage\PushMessages.xaml.cs">
+      <DependentUpon>PushMessages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PushMessage\PushMessagesViewModel.cs" />
+    <Compile Include="SaveToDB\SaveToDBCommand.cs" />
+    <Compile Include="ThreadPool\ThreadPoolManager.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="MainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ManageUsers\ManageUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DB\PartyServerDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PartyServerDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\PartyServerDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PartyServerDBModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DB\PartyServerDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PartyServerDBModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Configuration.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Moon-APNS-master\Application\MoonApns\MoonAPNS.csproj">
+      <Project>{A91E03EF-6532-4896-89C4-9FCEC1D8D4DB}</Project>
+      <Name>MoonAPNS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Newton JSON\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
+      <Project>{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}</Project>
+      <Name>Newtonsoft.Json.Net40</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

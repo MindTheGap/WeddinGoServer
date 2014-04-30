@@ -1,0 +1,35 @@
+﻿<Window x:Class="PartyServer.Views.ManageUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:PartyServer.ManageUsers"
+        Title="Manage Users"
+        Width="750"
+        Height="300">
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBox Name="searchUserTextBox"
+                 Grid.Row="0"
+                 Margin="0,0,0,20"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 TextChanged="searchUserTextBox_TextChanged"
+                 HorizontalContentAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 Foreground="Gray"
+                 GotFocus="searchUserTextBox_GotFocus"
+                 LostFocus="searchUserTextBox_LostFocus"
+                 Opacity="0.5"
+                 Text="Search Name" />
+        <DataGrid Grid.Row="1"
+                  x:Name="UserDataGrid"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  HorizontalContentAlignment="Center"
+                  ItemsSource="{Binding AllUsersCollection}"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" />
+    </Grid>
+</Window>
