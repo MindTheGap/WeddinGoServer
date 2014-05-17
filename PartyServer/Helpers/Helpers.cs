@@ -9,19 +9,16 @@ namespace PartyServer.Helpers
     {
         public enum MessageTypeFromClient
         {
+            Registration = 1,
             SearchResults,
-            GetAllJoinedWeddings,
-            LikeGreeting,
-            Registration
+            GetDetails,
+            GetGreetings
         }
 
         public enum MessageTypeToClient
         {
-            SearchResults,
-            GetAllJoinedWeddings,
-            Registration,
-            AOK,
-            Error
+            AOK = 1,
+            Error,
         }
 
         public enum ErrorType

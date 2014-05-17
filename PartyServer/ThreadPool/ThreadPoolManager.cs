@@ -11,6 +11,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Dynamic;
+using Newtonsoft.Json.Linq;
 
 namespace PartyServer.ThreadPoolManager
 {
@@ -125,7 +126,7 @@ namespace PartyServer.ThreadPoolManager
                 userOut = null;
                 return false;
             }
-            
+
             foreach (var user in usersList)
             {
                 if (user.Email == userEmailAddress)
@@ -152,9 +153,11 @@ namespace PartyServer.ThreadPoolManager
                     {
                         string strData = reader.ReadToEnd();
 
+                        LogAddMessage(strData);
+
                         dynamic dynamicObject = JsonConvert.DeserializeObject(strData);
 
-                        Nullable<PartyServer.Helpers.Helpers.MessageTypeFromClient> type = dynamicObject.type;
+                        Nullable<PartyServer.Helpers.Helpers.MessageTypeFromClient> type = dynamicObject.Type;
                         if (type != null)
                         {
                             switch (type)
@@ -165,15 +168,15 @@ namespace PartyServer.ThreadPoolManager
 
                                     break;
 
-                                case Helpers.Helpers.MessageTypeFromClient.GetAllJoinedWeddings:
+                                case Helpers.Helpers.MessageTypeFromClient.GetDetails:
 
-                                    HandleGetAllJoinedWeddingsMessage(dynamicObject, context);
+                                    //HandleGetAllJoinedWeddingsMessage(dynamicObject, context);
                                     
                                     break;
 
-                                case Helpers.Helpers.MessageTypeFromClient.LikeGreeting:
+                                case Helpers.Helpers.MessageTypeFromClient.GetGreetings:
 
-                                    HandleLikeGreetingMessage(dynamicObject, context);
+                                    //HandleLikeGreetingMessage(dynamicObject, context);
                                     
                                     break;
 
@@ -277,82 +280,82 @@ namespace PartyServer.ThreadPoolManager
         //    }
         //}
         
-        private void HandleGetAllJoinedWeddingsMessage(dynamic dynamicObject, HttpListenerContext context)
-        {
-            try
-            {
-                dynamic sendFlexible = new ExpandoObject();
-                sendFlexible.Type = Helpers.Helpers.MessageTypeToClient.GetAllJoinedWeddings;
-                var weddings = from wedding in MainWindowViewModel.dataEntities.Wedding
-                               where wedding.Member.First_Name.Contains("Chen") || wedding.Member1.First_Name.Contains("Chen") || wedding.Member.First_Name.Contains("Eti") || wedding.Member1.First_Name.Contains("Eti")
-                               select wedding;
+        //private void HandleGetAllJoinedWeddingsMessage(dynamic dynamicObject, HttpListenerContext context)
+        //{
+        //    try
+        //    {
+        //        dynamic sendFlexible = new ExpandoObject();
+        //        sendFlexible.Type = Helpers.Helpers.MessageTypeToClient.GetAllJoinedWeddings;
+        //        var weddings = from wedding in MainWindowViewModel.dataEntities.Wedding
+        //                       where wedding.Member.First_Name.Contains("Chen") || wedding.Member1.First_Name.Contains("Chen") || wedding.Member.First_Name.Contains("Eti") || wedding.Member1.First_Name.Contains("Eti")
+        //                       select wedding;
 
-                List<ExpandoObject> flexibleWeddingList = new List<ExpandoObject>();
-                foreach (var weddingLinq in weddings)
-                {
-                    dynamic flexibleWedding = new ExpandoObject();
-                    flexibleWedding.BrideFullName = weddingLinq.Member.First_Name + " " + weddingLinq.Member.Last_Name;
-                    flexibleWedding.GroomFullName = weddingLinq.Member1.First_Name + " " + weddingLinq.Member1.Last_Name;
-                    flexibleWedding.Date = weddingLinq.Date;
-                    flexibleWedding.Place = weddingLinq.Place;
-                    if (weddingLinq.Photo != null)
-                        flexibleWedding.Image = weddingLinq.Photo.Image_Path;
-                    flexibleWeddingList.Add(flexibleWedding);
-                }
+        //        List<ExpandoObject> flexibleWeddingList = new List<ExpandoObject>();
+        //        foreach (var weddingLinq in weddings)
+        //        {
+        //            dynamic flexibleWedding = new ExpandoObject();
+        //            flexibleWedding.BrideFullName = weddingLinq.Member.First_Name + " " + weddingLinq.Member.Last_Name;
+        //            flexibleWedding.GroomFullName = weddingLinq.Member1.First_Name + " " + weddingLinq.Member1.Last_Name;
+        //            flexibleWedding.Date = weddingLinq.Date;
+        //            flexibleWedding.Place = weddingLinq.Place;
+        //            if (weddingLinq.Photo != null)
+        //                flexibleWedding.Image = weddingLinq.Photo.Image_Path;
+        //            flexibleWeddingList.Add(flexibleWedding);
+        //        }
 
-                sendFlexible.Weddings = flexibleWeddingList;
+        //        sendFlexible.Weddings = flexibleWeddingList;
 
-                SendMessage(context, sendFlexible);
-            }
-            catch (Exception exception)
-            {
-                LogAddMessage("Message has exception: " + exception.Message + ". InnerMessage: " + exception.InnerException);
-            }
-        }
+        //        SendMessage(context, sendFlexible);
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        LogAddMessage("Message has exception: " + exception.Message + ". InnerMessage: " + exception.InnerException);
+        //    }
+        //}
 
-        private void HandleLikeGreetingMessage(dynamic dynamicObject, HttpListenerContext context)
-        {
-            try
-            {
-                Member userOut = null;
-                List<Member> membersList = MainWindowViewModel.dataEntities.Member.ToList();
-                string email = dynamicObject.Email;
-                if (UserExists(membersList, email, out userOut) == true)
-                {
-                    Debug.Assert(userOut != null);
+        //private void HandleLikeGreetingMessage(dynamic dynamicObject, HttpListenerContext context)
+        //{
+        //    try
+        //    {
+        //        Member userOut = null;
+        //        List<Member> membersList = MainWindowViewModel.dataEntities.Member.ToList();
+        //        string email = dynamicObject.Email;
+        //        if (UserExists(membersList, email, out userOut) == true)
+        //        {
+        //            Debug.Assert(userOut != null);
 
-                    if (userOut.Is_Blocked == true)
-                    {
-                        LogAddMessage("Received message from blocked user: " + dynamicObject.UserFirstName + " " + dynamicObject.UserLastName + ". ignoring.");
+        //            if (userOut.Is_Blocked == true)
+        //            {
+        //                LogAddMessage("Received message from blocked user: " + dynamicObject.UserFirstName + " " + dynamicObject.UserLastName + ". ignoring.");
 
-                        return;
-                    }
+        //                return;
+        //            }
 
-                    int? greetingId = dynamicObject.GreetingId;
-                    if (greetingId != null)
-                    {
-                        foreach (var greeting in this.MainWindowViewModel.dataEntities.Greeting)
-                        {
-                            if (greeting.Greeting_ID == (int)greetingId)
-                            {
-                                greeting.Like.Add(new Like() { Greeting_ID = greetingId, Member_ID = userOut.Member_ID });
+        //            int? greetingId = dynamicObject.GreetingId;
+        //            if (greetingId != null)
+        //            {
+        //                foreach (var greeting in this.MainWindowViewModel.dataEntities.Greeting)
+        //                {
+        //                    if (greeting.Greeting_ID == (int)greetingId)
+        //                    {
+        //                        greeting.Like.Add(new Like() { Greeting_ID = greetingId, Member_ID = userOut.Member_ID });
                                 
-                                dynamic sendFlexible = new ExpandoObject();
-                                sendFlexible.Type = Helpers.Helpers.MessageTypeToClient.AOK;
+        //                        dynamic sendFlexible = new ExpandoObject();
+        //                        sendFlexible.Type = Helpers.Helpers.MessageTypeToClient.AOK;
 
-                                SendMessage(context, sendFlexible);
+        //                        SendMessage(context, sendFlexible);
 
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                LogAddMessage("Message has exception: " + exception.Message + ". InnerMessage: " + exception.InnerException);
-            }
-        }
+        //                        break;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        LogAddMessage("Message has exception: " + exception.Message + ". InnerMessage: " + exception.InnerException);
+        //    }
+        //}
 
 
         private void HandleSearchResultsMessage(dynamic dynamicObject, HttpListenerContext context)
@@ -395,7 +398,8 @@ namespace PartyServer.ThreadPoolManager
                 if (dynamicObject != null)
                 {
                     Member userOut = null;
-                    if (UserExists(MainWindowViewModel.dataEntities.Member.ToList(), dynamicObject.Email, out userOut) == true)
+                    JValue emailObject = dynamicObject.Email;
+                    if (UserExists(MainWindowViewModel.dataEntities.Member.ToList(), emailObject.Value as string, out userOut) == true)
                     {
                         Debug.Assert(userOut != null);
 
@@ -410,6 +414,15 @@ namespace PartyServer.ThreadPoolManager
                             SendMessage(context, sendFlexible);
 
                             return;
+                        }
+                        else
+                        {
+                            // in case user already exists and isn't blocked - we should return an error
+                            dynamic sendFlexible = new ExpandoObject();
+                            sendFlexible.Type = Helpers.Helpers.MessageTypeToClient.Error;
+                            sendFlexible.ErrorType = Helpers.Helpers.ErrorType.UserAlreadyExists;
+
+                            SendMessage(context, sendFlexible);
                         }
                     }
                     else // user doesn't exist
